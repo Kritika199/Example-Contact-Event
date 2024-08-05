@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Light blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.content {
+    display: flex;
+    height: 400px; /* Fixed height for content */
+}
+
+.form-section {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form-section input[type="text"],
+.form-section input[type="radio"],
+.form-section input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-section div {
+    margin-bottom: 20px;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 10px 10px 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.nav-buttons button {
+    margin-left: 10px;
+}
+
+.back {
+    background-color: #4caf50;
+    color: white;
+}
+
+.next {
+    background-color: #008cba;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.radio-group {
+    display: flex; /* Display radio buttons in a row */
+    align-items: center; /* Center align items vertically */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 10px; /* Adjust spacing between radio buttons */
+}
+.toggle-switch {
+    
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #0caae3;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.toggle-checkbox {
+    display: none;
+   
+}
+
+.toggle-label {
+    position: right;
+    top: 1px;
+    right: 1px;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    margin-right: 10px; 
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    transform: translateX(20px);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.nav-buttons button {
+    margin-left: 10px;
+}
+
+.back {
+    background-color: #4caf50;
+    color: white;
+}
+
+.next {
+    background-color: #008cba;
+    color: white;
+}
