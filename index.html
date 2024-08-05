@@ -1,61 +1,164 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Custom Journey Builder Activity</title>
-
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/require.js"></script>
-    <script type="text/javascript">
-      (function () {
-        var config = {
-          baseUrl: "",
-        };
-
-        var dependencies = ["customActivity"];
-
-        require(config, dependencies);
-      })();
-    </script>
-
-    <!--Styles-->
-    <style type="text/css">
-      body {
-        padding: 20px;
-        margin: 0;
-      }
-      .step {
-        display: none;
-      }
-      #step1 {
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="step1" class="step">
-      Select your SMS message:
-      <select id="select1">
-        <option value="">Select an option</option>
-        <option value="someMessage">Some SMS</option>
-        <option value="anotherMessage">Another SMS</option>
-        <option value="thirdMessage">Third SMS</option>
-        <option value="unknownMessage">Unknown SMS</option>
-      </select>
-
-      <button id="toggleLastStep">Toggle Last Step</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Your PostGrid Account</title>
+    <link rel="stylesheet" href="inedxcustom.css">
+</head>
+<body>
+    <div class="container" id="formContainer">
+        <!-- First Form -->
+        <div class="modal" id="firstForm">
+            <div class="content">
+                <div class="form-section">
+                    <h3>Connect your PostGrid account</h3>
+                    <label for="test-api-key">Test API Key:</label>
+                    <input type="text" id="test-api-key" name="test-api-key">
+                    <label for="live-api-key">Live API Key:</label>
+                    <input type="text" id="live-api-key" name="live-api-key">
+                </div>
+                <div class="image-section">
+                    <img src="https://t4.ftcdn.net/jpg/03/78/44/41/360_F_378444168_xsV5o5cfrv0QhYSJeEcihMQUoscu5NKt.jpg" alt="Sample Image">
+                </div>
+            </div>
+            <div class="footer">
+                <button class="cancel">Cancel</button>
+                <div class="nav-buttons">
+                    <button class="back">Back</button>
+                    <button class="next" onclick="showSecondForm()">Next</button>
+                </div>
+            </div>
+        </div>
+    <!-- Second Form -->
+    <div class="modal" id="secondForm" style="display: none;">
+        <div class="toggle-switch-container">
+            <label for="test-mode" class="toggle-text">Test Mode:</label>
+            <div class="toggle-switch">
+                <input type="checkbox" id="test-mode" name="test-mode" class="toggle-checkbox">
+                <label for="test-mode" class="toggle-label"></label>
+            </div>
+        </div>
+        <div class="content">
+            <div class="form-section">
+                <div class="labels-column">
+                    <label for="message-type">Message Type:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="letters" name="message-type" value="letters" checked>
+                        <label for="letters">Letters</label>
+                        <input type="radio" id="postcards" name="message-type" value="postcards">
+                        <label for="postcards">Postcards</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="labels-column">
+                        <label for="creation-type">Creation Type:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="html" name="creation-type" value="html" checked>
+                            <label for="html">HTML</label>
+                            <input type="radio" id="pdf-upload" name="creation-type" value="pdf-upload">
+                            <label for="pdf-upload">PDF Upload</label>
+                            <input type="radio" id="existing-template" name="creation-type" value="existing-template">
+                            <label for="existing-template">Existing Template</label>
+                            <input type="radio" id="new-template" name="creation-type" value="new-template">
+                            <label for="new-template">New Template</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="cancel">Cancel</button>
+            <div class="nav-buttons">
+                <button class="back" onclick="showFirstForm()">Back</button>
+                <button class="next" onclick="showThirdForm()">Next</button>
+            </div>
+        </div>
     </div>
-    <div id="step2" class="step">
-      Here's a second page with some info on it.
-    </div>
-    <div id="step3" class="step">
-      You chose the message:
-      <div id="message"></div>
-    </div>
-    <div id="step4" class="step">
-      Hey, here's a fourth step, just for you. Toggle this on or off from step
-      1.
-    </div>
-  </body>
-</html>
+
+    <!-- third Form -->
+    
+        <div class="modal" id="thirdForm">
+            <div class="content">
+                <h3>HTML</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="send-date">Send Date *</label>
+                        <input type="date" class="form-control" id="send-date" name="send-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="extra-service">Extra Service</label>
+                        <select class="form-control" id="extra-service" name="extra-service">
+                            <option value="">Select Extra Service</option>
+                            <!-- Add options here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mailing-class">Mailing Class *</label>
+                        <select class="form-control" id="mailing-class" name="mailing-class" required>
+                            <option value="">Select Mailing Class</option>
+                            <option value="first-class">First Class (7-10 business days)</option>
+                            <option value="standard-class">Standard Class (10-14 business days)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="return-envelope">Return Envelope</label>
+                        <select class="form-control" id="return-envelope" name="return-envelope">
+                            <option value="">Select Return Envelope</option>
+                            <!-- Add options here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="envelope-type">Envelope Type</label>
+                        <input type="text" class="form-control" id="envelope-type" name="envelope-type" value="Standard Double Window" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="destination" value="us-international" required> US & International</label>
+                            <label><input type="radio" name="destination" value="uk"> United Kingdom</label>
+                            <label><input type="radio" name="destination" value="canada"> Canada</label>
+                            <label><input type="radio" name="destination" value="australia"> Australia</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Options</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="color"> Color</label>
+                            <label><input type="checkbox" name="perforate"> Perforate First Page</label>
+                            <label><input type="checkbox" name="double-sided"> Double Sided</label>
+                            <label><input type="checkbox" name="express-delivery"> Express Delivery</label>
+                            <label><input type="checkbox" name="blank-page"> Insert Blank Page for Address</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>HTML Code</label>
+                        <textarea class="html-code" rows="10" readonly>
+    <html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <h1>My First Heading</h1>
+        <p>My first paragraph.</p>
+    </body>
+    </html>
+                        </textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn" onclick="goBack()">Back</button>
+                        <button type="submit" class="btn">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+   
+    
+    <script src="customscript.js"></script>
+    </body>
+    </html>
+    
